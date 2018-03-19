@@ -95,5 +95,8 @@ Style/SymbolArray:
 # Offense count: 27
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
+
 Metrics/LineLength:
-  Max: 130
+  Exclude:
+    - config/initializers/devise.rb
+    - db/migrate/20180319120347_devise_create_users.rb

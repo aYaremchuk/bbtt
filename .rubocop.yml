@@ -2,7 +2,13 @@ inherit_from: .rubocop_todo.yml
 Documentation:
   Enabled: false
 Metrics/LineLength:
-    Max: 120
+  Max: 120
+Metrics/MethodLength:
+  CountComments: false
+  Max: 20
+Metrics/ClassLength:
+  CountComments: false
+  Max: 100
 Lint/HandleExceptions:
   Enabled: false
 

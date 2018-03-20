@@ -1,18 +1,33 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.col-md-8
+  .card-group
+    .card.p-4
+      .card-body
+        h1
+          | Login
+        p.text-muted
+          | Sign In to your account
+
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .input-group.mb-3
+            .input-group-prepend
+              span.input-group-text
+                i.icon-user
+            = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email', class: 'form-control'
+          .input-group.mb-4
+            .input-group-prepend
+              span.input-group-text
+                i.icon-lock
+            = f.password_field :password, autocomplete: 'off', placeholder: 'Email', class: 'form-control'
+          .row
+            .col-6
+              - if devise_mapping.rememberable?
+                .field
+                  = f.check_box :remember_me
+                  = f.label :remember_me
+          .row
+            .col-6
+              = f.submit 'Login', class: 'button btn btn-primary px-4'
+            .col-6.text-right
+              = render 'devise/shared/links'
+    .card.text-white.bg-primary.py-5.d-md-down-none[style="width:44%"]
+      .card-body.text-center

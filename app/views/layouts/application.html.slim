@@ -1,14 +1,78 @@
 doctype html
 html
-  head
-    title
-      | Bbtt
-    = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    p.notice
-      = notice
-    p.alert
-      = alert
-    = yield
+  = render 'layouts/head'
+  / body
+  /   p.notice
+  /     = notice
+  /   p.alert
+  /     = alert
+  /   = yield
+  /!
+    | BODY options, add following classes to body to change options
+
+    | \// Header options
+    | 1. '.header-fixed'          - Fixed Header
+
+    | \// Brand options
+    | 1. '.brand-minimized'       - Minimized brand (Only symbol)
+
+    | \// Sidebar options
+    | 1. '.sidebar-fixed'          - Fixed Sidebar
+    | 2. '.sidebar-hidden'        - Hidden Sidebar
+    | 3. '.sidebar-off-canvas'    - Off Canvas Sidebar
+    | 4. '.sidebar-minimized'      - Minimized Sidebar (Only icons)
+    | 5. '.sidebar-compact'        - Compact Sidebar
+
+    | \// Aside options
+    | 1. '.aside-menu-fixed'      - Fixed Aside Menu
+    | 2. '.aside-menu-hidden'      - Hidden Aside Menu
+    | 3. '.aside-menu-off-canvas'  - Off Canvas Aside Menu
+
+    | \// Breadcrumb options
+    | 1. '.breadcrumb-fixed'      - Fixed Breadcrumb
+
+    | \// Footer options
+    | 1. '.footer-fixed'          - Fixed footer
+  body.app.header-fixed.sidebar-fixed.aside-menu-fixed.aside-menu-hidden
+    = render 'layouts/header'
+    .app-body
+      = render 'layouts/left_sidebar'
+      /! Main content
+      main.main
+        ol.breadcrumb
+          li.breadcrumb-item Home
+          li.breadcrumb-item
+            a href="#"  Admin
+          li.breadcrumb-item.active Dashboard
+          /! Breadcrumb Menu
+          li.breadcrumb-menu.d-md-down-none
+            .btn-group aria-label=("Button group") role="group"
+              / a.btn href="#"
+              /   i.icon-speech
+              / a.btn href="./"
+              /   i.icon-graph
+              /   | &nbsp;Dashboard
+              a.btn href="#"
+                i.icon-settings
+                | &nbsp;Admin panel
+        .container-fluid
+          #ui-view
+            .animated.fadeIn
+              = yield
+
+    footer.app-footer
+      span
+        a href="#" JAV
+        | &nbsp;&copy; 2018 jav.
+      span.ml-auto
+        | Powered by
+        a href="#"  JAV
+    = render 'layouts/scripts'
+
+    / script src="node_modules/pace-progress/pace.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"
+    /! Plugins and scripts required by all views
+    / script src="node_modules/chart.js/dist/Chart.min.js"
+    = javascript_include_tag 'app'
+    /! CoreUI main scripts
+    / script src="js/app.js"

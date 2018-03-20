@@ -1,0 +1,8 @@
+doctype html
+html lang="en"
+  = render 'layouts/head'
+  body.app.flex-row.align-items-center
+    .container
+      .row.justify-content-center
+        = yield
+  = render 'layouts/scripts'

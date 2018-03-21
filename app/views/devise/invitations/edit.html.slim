@@ -1,0 +1,22 @@
+.col-md-8
+  .card-group
+    .card.p-4
+      .card-body
+        h1
+          = t 'devise.invitations.edit.header'
+        = form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f|
+          = devise_error_messages!
+          = f.hidden_field :invitation_token, readonly: true
+          - if f.object.class.require_password_on_accepting
+            .input-group.mb-4
+              .input-group-prepend
+                span.input-group-text
+                  i.icon-lock
+              = f.password_field :password, autocomplete: 'off', placeholder: 'Password' , class: 'form-control'
+            .input-group.mb-4
+              .input-group-prepend
+                span.input-group-text
+                  i.icon-lock
+              = f.password_field :password_confirmation,autocomplete: 'off', placeholder: 'Password confirmation' , class: 'form-control'
+          p
+            = f.submit t("devise.invitations.edit.submit_button"), class: 'button btn btn-primary px-4'

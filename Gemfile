@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim-rails'
 
 gem 'devise'
+gem 'devise_invitable'
 gem 'pundit'
 
 group :development, :test do

@@ -1,12 +1,6 @@
 doctype html
 html
   = render 'layouts/head'
-  / body
-  /   p.notice
-  /     = notice
-  /   p.alert
-  /     = alert
-  /   = yield
   /!
     | BODY options, add following classes to body to change options
 
@@ -56,6 +50,7 @@ html
                 i.icon-settings
                 | &nbsp;Admin panel
         .container-fluid
+          = flash_messages
           #ui-view
             .animated.fadeIn
               = yield
@@ -67,12 +62,7 @@ html
       span.ml-auto
         | Powered by
         a href="#"  JAV
-    = render 'layouts/scripts'
-
-    / script src="node_modules/pace-progress/pace.min.js"
     script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"
     /! Plugins and scripts required by all views
     / script src="node_modules/chart.js/dist/Chart.min.js"
     = javascript_include_tag 'app'
-    /! CoreUI main scripts
-    / script src="js/app.js"

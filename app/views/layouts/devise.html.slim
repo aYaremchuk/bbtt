@@ -3,6 +3,7 @@ html lang="en"
   = render 'layouts/head'
   body.app.flex-row.align-items-center
     .container
+      = flash_messages
       .row.justify-content-center
         = yield
-  = render 'layouts/scripts'
+

@@ -15,5 +15,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 ############## Scripts ##############
 Rails.application.config.assets.precompile += %w(
-	app.js
+  app.js
 )

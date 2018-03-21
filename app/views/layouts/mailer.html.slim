@@ -1,8 +1,55 @@
+/ doctype html
+/ html
+/   head
+/     meta[http-equiv="Content-Type" content="text/html; charset=utf-8"]
+/     style
+/       |  /* Email styles need to be inline */
+/   body
+/     = yield
 doctype html
 html
   head
-    meta[http-equiv="Content-Type" content="text/html; charset=utf-8"]
-    style
-      |  /* Email styles need to be inline */ 
-  body
-    = yield
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    meta charset="UTF-8"
+  body bgcolor="#f2f2f4" style=("-webkit-text-size-adjust: none; background: #f2f2f4") text="#000"
+    css:
+      | body {
+      | background-color: #f2f2f4;
+        -webkit-text-size-adjust: none;
+      |
+      }
+    center
+      center.top style="font-family: Helvetica, Arial, sans-serif; max-width: 604px; text-align: left; width: 100%"
+        br
+        table.outer bgcolor="#e6e6e9" border="0" cellpadding="0" cellspacing="0" style=("background: #e6e6e9") width="100%"
+          tr.first
+            td.bg bgcolor="white" style="background: white" valign="top"
+              table border="0" cellpadding="0" cellspacing="0" width="100%"
+                tr
+                  td width="70"
+                  td
+                    br
+                    center style="letter-spacing: 2px"
+                      font.capital color="#000000" size="4" style="text-transform: uppercase"
+                        | BbTt
+                      br
+                      span style="border-bottom-color: #58c9f3; border-bottom-style: solid; border-bottom-width: 3px; display: inline-block; width: 70px"
+                    br
+                  td width="70"
+                tr
+                  td width="70"
+                  td
+                    table border="0" cellpadding="0" cellspacing="0" width="100%"
+                      tr
+                        td
+                          = yield
+                  td width="70"
+                tr
+                  td colspan="3"
+                    br
+                    br
+          tr.last
+            td.bg bgcolor="#d9d9db" style="background: #d9d9db" valign="top"
+              center style="line-height: 1.6em"
+                font color="#b7b7b7" size="2" style="display: inline-block; padding: 0 40px"  © BbTt, 2018
+        br

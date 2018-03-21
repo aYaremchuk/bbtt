@@ -11,6 +11,13 @@ Metrics/ClassLength:
   Max: 100
 Lint/HandleExceptions:
   Enabled: false
+Style/SymbolArray:
+  EnforcedStyle: percent
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: ()
+    '%i': ()
+    '%w': ()
 
 AllCops:
   Include:

@@ -89,8 +89,8 @@ Style/StringLiterals:
 # Cop supports --auto-correct.
 # Configuration parameters: MinSize.
 # SupportedStyles: percent, brackets
-Style/SymbolArray:
-  EnforcedStyle: brackets
+# Style/SymbolArray:
+#  EnforcedStyle: brackets
 
 # Offense count: 27
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
@@ -100,3 +100,7 @@ Metrics/LineLength:
   Exclude:
     - config/initializers/devise.rb
     - db/migrate/20180319120347_devise_create_users.rb
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - config/spring.rb

@@ -1,0 +1,28 @@
+.animated.fadeIn
+  .row
+    .col-lg-12
+      .card
+        .card-header
+          i.fa.fa-align-justify
+          = @user.email
+          .card-actions
+            - if current_user.id == @user.id
+              = link_to edit_user_path(@user), { remote: true, 'data-toggle': 'modal', 'data-target': '#modal' } do
+                i.icon-pencil
+        .card-body
+          .form-group.row
+            label.col-md-3.col-form-label Email
+            .col-md-9
+              p.form-control-static = @user.email
+          .form-group.row
+            label.col-md-3.col-form-label First name
+            .col-md-9
+              p.form-control-static = @user.first_name
+          .form-group.row
+            label.col-md-3.col-form-label Last name
+            .col-md-9
+              p.form-control-static = @user.last_name
+          - if current_user.id == @user.id
+            .form-group.row
+              .col-md-3
+                = link_to 'Change password', edit_user_registration_path

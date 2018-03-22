@@ -31,3 +31,4 @@ AllCops:
     - spec/rails_helper.rb
     - bin/*
     - config/initializers/devise.rb
+    - app/helpers/devise_helper.rb

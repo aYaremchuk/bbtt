@@ -1,0 +1,20 @@
+.animated.fadeIn
+  .row
+    .col-lg-12
+      .card
+        .card-header
+          i.fa.fa-align-justify
+          | New post
+        .card-body
+          p#notice = notice
+
+          p
+            strong Title:
+            = @post.title
+          p
+            strong Text:
+            = @post.text
+
+          => link_to 'Edit', edit_admin_post_path(@post)
+          '|
+          =< link_to 'Back', admin_posts_path

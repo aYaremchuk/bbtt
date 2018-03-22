@@ -8,13 +8,14 @@
             | Dashboard
             / span.badge.badge-primary NEW
         li.nav-item
-          a.nav-link href="#"
+          = link_to admin_posts_path, class: 'nav-link' do
             i.icon-pencil
             | Posts
         li.nav-item
           = link_to admin_users_path, class: 'nav-link' do
             i.icon-people
             | Users
+
     /     li.nav-title
     /       | Theme
     /     li.nav-item

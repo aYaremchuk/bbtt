@@ -1,0 +1,26 @@
+= form_for [:admin, @post], html: { class: 'form-horizontal' } do |f|
+  .card-header
+    i.fa.fa-align-justify
+    strong
+      = title if defined? title
+  .card-body
+    - if @post.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+        ul
+          - @post.errors.full_messages.each do |message|
+            li = message
+    .form-group.row
+      label.col-md-3.col-form-label Title
+      .col-md-9
+        = f.text_field :title, class: 'form-control'
+    .form-group.row
+      label.col-md-3.col-form-label Text
+      .col-md-9
+        = f.text_area :text, class: 'form-control'
+  .card-footer
+    = f.submit class: 'btn btn-sm btn-primary' do
+      i.fa.fa-dot-circle-o
+    = link_to admin_posts_path, class: 'btn btn-sm btn-danger' do
+      i.fa.fa-ban
+      | Reset

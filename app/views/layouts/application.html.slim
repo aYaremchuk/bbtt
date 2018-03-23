@@ -27,7 +27,7 @@ html
 
     | \// Footer options
     | 1. '.footer-fixed'          - Fixed footer
-  body.app.header-fixed.sidebar-fixed.aside-menu-fixed.aside-menu-hidden
+  body.app.header-fixed.aside-menu-fixed.sidebar-fixed.aside-menu-hidden class=[current_user.user? ? 'sidebar-hidden' : 'sidebar-minimized']
     = render 'layouts/header'
     .app-body
       = render 'layouts/left_sidebar'
@@ -46,15 +46,18 @@ html
               / a.btn href="./"
               /   i.icon-graph
               /   | &nbsp;Dashboard
-              a.btn href="#"
-                i.icon-settings
-                | &nbsp;Admin panel
+              / a.btn href="#"
+              /   i.icon-settings
+              /   | &nbsp;Admin panel
         .container-fluid
           = flash_messages
           #ui-view
             .animated.fadeIn
               = yield
-
+        /! Modal
+        #modal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" role="dialog" tabindex="-1"
+          .modal-dialog role="document"
+            .modal-content
     footer.app-footer
       span
         a href="#" JAV
@@ -66,3 +69,4 @@ html
     /! Plugins and scripts required by all views
     / script src="node_modules/chart.js/dist/Chart.min.js"
     = javascript_include_tag 'app'
+    = yield(:additional_scripts) if yield(:additional_scripts).present?

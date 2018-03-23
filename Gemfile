@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim-rails'
 
 gem 'devise'
+gem 'devise_invitable'
 gem 'pundit'
 
 group :development, :test do
@@ -63,6 +64,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
 end
 

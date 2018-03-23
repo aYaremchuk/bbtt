@@ -1,0 +1,39 @@
+- content_for(:additional_scripts) do
+  script src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'
+  script src='https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js'
+  = javascript_include_tag 'datatable'
+
+- content_for(:additional_styles) do
+  link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"
+
+.animated.fadeIn
+  .row
+    .col-lg-12
+      .card
+        .card-header
+          i.fa.fa-align-justify
+          | Post list
+          .card-actions
+            = link_to new_admin_post_path do
+              i.icon-plus
+        .card-body
+          table#datatable.table.table-striped.table-bordered style="width:100%"
+            thead
+              tr
+                th Title
+                th Text
+                th Actions
+            tbody
+              - @posts.each do |post|
+                tr
+                  td = post.title
+                  td = post.text
+                  td.actions
+                    = link_to 'Show', admin_post_path(post)
+                    = link_to 'Edit', edit_admin_post_path(post)
+                    = link_to 'Destroy', admin_post_path(post), data: { confirm: 'Are you sure?'}, method: :delete
+            tfoot
+              tr
+                th Title
+                th Text
+                th Actions

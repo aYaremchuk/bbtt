@@ -1,0 +1,32 @@
+.animated.fadeIn
+  .row
+    .col-lg-12
+      .card
+        .card-header
+          i.fa.fa-align-justify
+          | Users list
+          .card-actions
+            = link_to new_admin_user_path, { remote: true, 'data-toggle': 'modal', 'data-target': '#modal' } do
+              i.icon-plus
+        .card-body
+          table.table.table-responsive-sm
+            thead
+              tr
+                th User info
+                th Date registered
+                th Role
+                th Groups
+                th Actions
+            tbody
+              - @users.each do |user|
+                tr
+                  td = user.email
+                  td = user.created_at
+                  td = user.role
+                  td
+                  td
+                    = link_to 'Edit', edit_admin_user_path(user), { remote: true, 'data-toggle': 'modal', 'data-target': '#modal', class: 'm-10' }
+                    = link_to 'Destroy', admin_user_path(user),
+                                         method: :delete,
+                                         data: { confirm: 'Are you sure?' },
+                                         class: 'm-10'

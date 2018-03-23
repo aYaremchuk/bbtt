@@ -1,0 +1,9 @@
+.animated.fadeIn
+  .row
+    .col-lg-12
+      .card
+        == render partial: 'form', locals: { title: 'Edit post' }
+
+/ => link_to 'Show', admin_post_path(@post)
+/ '|
+/ =< link_to 'Back', admin_posts_path

@@ -15,6 +15,6 @@
 //= require jquery_ujs
 //= require activestorage
 //= require turbolinks
+//= requite custom
 
-//= require_tree .
 //= require_self

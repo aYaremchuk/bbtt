@@ -1,5 +1,6 @@
 require File.expand_path('../../config/environment', __FILE__)
 require 'simplecov'
+
 SimpleCov.start do
   load_profile 'rails'
   at_exit do

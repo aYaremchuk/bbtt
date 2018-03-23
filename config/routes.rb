@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     get '/', to: 'dashboards#index'
     resources :users
     resources :posts
+    resources :groups
   end
 end

@@ -15,7 +15,7 @@ module Admin
     def edit; end
 
     def create
-      @post = Post.new(post_params)
+      @post = current_user.posts.new(post_params)
 
       respond_to do |format|
         if @post.save
@@ -30,12 +30,11 @@ module Admin
 
     def update
       respond_to do |format|
-        if @post.update(post_params)
+        if @post.update(post_params.merge(user: current_user))
           format.html { redirect_to [:admin, @post], notice: 'Post was successfully updated.' }
           format.json { render :show, status: :ok, location: @post }
         else
           format.html { render :edit }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
     end

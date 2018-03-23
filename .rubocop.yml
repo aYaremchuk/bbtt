@@ -18,6 +18,8 @@ Style/PercentLiteralDelimiters:
     default: ()
     '%i': ()
     '%w': ()
+Metrics/AbcSize:
+  Enabled: false
 
 AllCops:
   Include:
@@ -31,4 +33,3 @@ AllCops:
     - spec/rails_helper.rb
     - bin/*
     - config/initializers/devise.rb
-    - app/helpers/devise_helper.rb

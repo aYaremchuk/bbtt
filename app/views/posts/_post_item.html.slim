@@ -1,0 +1,6 @@
+.col-sm-6.col-md-4
+  .card
+    .card-header
+      = link_to post.title.truncate(60, omission: '...'), post_path(post)
+    .card-body
+      = post.text.truncate(250, omission: '...')

@@ -33,3 +33,4 @@ AllCops:
     - spec/rails_helper.rb
     - bin/*
     - config/initializers/devise.rb
+    - lib/tasks/fill_data.rake

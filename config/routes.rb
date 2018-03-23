@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: :index
+  resources :posts, only: %i(index show)
 
   namespace :admin do
     get '/', to: 'dashboards#index'

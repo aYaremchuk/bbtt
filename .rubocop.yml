@@ -34,3 +34,4 @@ AllCops:
     - bin/*
     - config/initializers/devise.rb
     - lib/tasks/fill_data.rake
+    - config/environments/development.rb

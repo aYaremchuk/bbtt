@@ -31,7 +31,7 @@ module Admin
     def update
       respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
+          format.html { redirect_to admin_users_path, notice: 'user was successfully updated.' }
         else
           format.html { render :edit }
         end
@@ -41,7 +41,7 @@ module Admin
     def destroy
       @user.destroy
       respond_to do |format|
-        format.html { redirect_to admin_users_path, notice: 'User was successfully destroyed' }
+        format.html { redirect_to admin_users_path, notice: 'user was successfully destroyed' }
         format.json { head :no_content }
       end
     end
@@ -49,7 +49,7 @@ module Admin
     private
 
     def set_user
-      @user = User.find_by_id(params[:id])
+      @user = user.find_by_id(params[:id])
     end
 
     def user_params

@@ -22,6 +22,7 @@
               tr
                 th Title
                 th Text
+                th Groups
                 th Actions
             tbody
               - @posts.each do |post|
@@ -29,6 +30,9 @@
                   tr
                     td = post.title.truncate(25, omission: '...')
                     td = post.text.truncate(150, omission: '...')
+                    td
+                      - post.groups.each do |group|
+                        span.badge style="background-color: #{group.color}" = group.name
                     td.actions
                       = link_to 'Show', admin_post_path(post)
                       = link_to 'Edit', edit_admin_post_path(post)
@@ -37,4 +41,5 @@
               tr
                 th Title
                 th Text
+                th Groups
                 th Actions

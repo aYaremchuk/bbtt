@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :users, except: :index
   resources :posts, only: %i(index show)
 
+  # resources :post_forms
+
   namespace :admin do
     get '/', to: 'dashboards#index'
     resources :users

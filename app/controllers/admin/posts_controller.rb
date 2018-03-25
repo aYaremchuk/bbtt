@@ -23,7 +23,7 @@ module Admin
         # session[:user_id] = @signup_form.user.id
         redirect_to admin_posts_path, notice: 'Post was successfully created.'
       else
-        render 'new'
+        render :new
       end
       # @post = current_user.posts.new(post_params)
       #
@@ -44,7 +44,7 @@ module Admin
         # session[:user_id] = @signup_form.user.id
         redirect_to admin_posts_path, notice: 'Post was successfully updated.'
       else
-        render 'edit'
+        render :edit
       end
       # respond_to do |format|
       #   if @post.update(post_params.merge(user: current_user))

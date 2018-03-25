@@ -23,10 +23,10 @@
                   tr
                     td = user.email
                     td = user.created_at
+                    td = user.role
                     td
                       - user.groups.each do |group|
                         span.badge style="background-color: #{group.color}" = group.name
-                    td
                     td
                       = link_to 'Edit', edit_admin_user_path(user), { remote: true, 'data-toggle': 'modal', 'data-target': '#modal', class: 'm-10' }
                       = link_to 'Destroy', admin_user_path(user),

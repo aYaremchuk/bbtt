@@ -3,7 +3,7 @@ module Admin
     before_action :set_post, only: %i(show edit update destroy)
 
     def index
-      @posts = Post.all.eager_load(:groups)
+      @posts = Post.all.eager_load(:groups).includes(:posts_groups)
     end
 
     def show; end

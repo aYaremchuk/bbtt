@@ -22,6 +22,7 @@
               tr
                 th Title
                 th Text
+                th Views stats
                 th Groups
                 th Actions
             tbody
@@ -30,6 +31,7 @@
                   tr
                     td = post.title.truncate(25, omission: '...')
                     td = post.text.truncate(150, omission: '...')
+                    td = views_percents(post)
                     td
                       - post.groups.each do |group|
                         span.badge style="background-color: #{group.color}" = group.name
@@ -41,5 +43,6 @@
               tr
                 th Title
                 th Text
+                th Views stats
                 th Groups
                 th Actions

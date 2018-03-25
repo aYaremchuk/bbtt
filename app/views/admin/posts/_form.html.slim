@@ -1,4 +1,4 @@
-= form_for(@post_form, url: form_path(@post), method: form_method(@post), html: { class: 'form-horizontal' }) do |f|
+= form_for(@post_form, url: post_form_path(@post), method: post_form_method(@post), html: { class: 'form-horizontal' }) do |f|
   .card-header
     i.fa.fa-align-justify
     strong
@@ -26,7 +26,7 @@
             = g.check_box class: 'form-check-input'
             label.form-check-label = g.text
   .card-footer
-    = f.submit "#{form_button(@post)} post", class: 'btn btn-sm btn-primary' do
+    = f.submit "#{post_form_button(@post)} post", class: 'btn btn-sm btn-primary' do
       i.fa.fa-dot-circle-o
     = link_to admin_posts_path, class: 'btn btn-sm btn-danger' do
       i.fa.fa-ban

@@ -10,12 +10,6 @@ module Admin
 
     def new
       @user_form = ::UserForm.new
-      # @user = User.new
-      #   @user = User.new
-      #   respond_to do |format|
-      #     format.html
-      #     format.js
-      #   end
     end
 
     def edit
@@ -25,35 +19,19 @@ module Admin
     def create
       @user_form = ::UserForm.new(user_form_params)
       if @user_form.save
-        # session[:user_id] = @signup_form.user.id
         redirect_to admin_users_path, notice: 'User was successfully created.'
       else
         render :new
       end
-      # respond_to do |format|
-      #   if User.invite!(user_params)
-      #     format.html { redirect_to admin_users_path, notice: 'User was successfully invited.' }
-      #   else
-      #     format.html { render :new }
-      #   end
-      # end
     end
 
     def update
       @user_form = ::UserForm.new(user_form_params.merge(id: @user.id))
       if @user_form.update
-        # session[:user_id] = @signup_form.user.id
         redirect_to admin_users_path, notice: 'User was successfully updated.'
       else
         render :edit
       end
-      # respond_to do |format|
-      #   if @user.update(user_params)
-      #     format.html { redirect_to admin_users_path, notice: 'user was successfully updated.' }
-      #   else
-      #     format.html { render :edit }
-      #   end
-      # end
     end
 
     def destroy

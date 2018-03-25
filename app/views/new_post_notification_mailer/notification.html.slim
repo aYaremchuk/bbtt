@@ -1,0 +1,4 @@
+h2 Hey, #{@user.first_name} #{@user.last_name}
+p
+  | Check new post in your groups by visiting
+= link_to @post.title, post_url(@post)

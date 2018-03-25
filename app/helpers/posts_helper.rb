@@ -11,8 +11,12 @@ module PostsHelper
     post.present? ? 'Edit' : 'New'
   end
 
+  def total_users(post)
+    post.groups.map { |item| item.users.count }.sum
+  end
+
   def views_percents(post)
-    return '-' unless post.views_info.length > 0
-    "#{100 * post.views_info.length / post.groups.map {|item| item.users.count}.sum} %"
+    return '-' if post.views_info.empty?
+    "#{100 * post.views_info.length / total_users(post)} %"
   end
 end

@@ -1,5 +1,7 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'posts#index'
 
   get 'home/index'
 
@@ -13,12 +15,14 @@ Rails.application.routes.draw do
   resources :users, except: :index
   resources :posts, only: %i(index show)
 
-  # resources :post_forms
-
   namespace :admin do
     get '/', to: 'dashboards#index'
     resources :users
     resources :posts
     resources :groups
+  end
+
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web, at: '/sidekiq', as: 'sidekiq'
   end
 end

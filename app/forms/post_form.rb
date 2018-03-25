@@ -21,10 +21,11 @@ class PostForm
     return false if invalid?
     begin
       ActiveRecord::Base.transaction do
-        post = Post.create(post_params)
-        post.groups << Group.where(id: group_ids)
-        post.save!
+        @post = Post.create(post_params)
+        @post.groups << Group.where(id: group_ids)
+        @post.save!
       end
+      NewPostNotificationJob.perform_later(@post)
 
       true
     rescue e

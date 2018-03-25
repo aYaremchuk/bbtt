@@ -21,6 +21,7 @@ system to create posts and distribute them
 * rake db:migrate
 * rake db:fill_users
 * rails s
+* sidekiq
 
 ### Credentials
 - Admin user  

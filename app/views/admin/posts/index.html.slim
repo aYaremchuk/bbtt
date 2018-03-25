@@ -22,6 +22,7 @@
               tr
                 th Title
                 th Text
+                th Total users
                 th Views stats
                 th Groups
                 th Actions
@@ -31,10 +32,11 @@
                   tr
                     td = post.title.truncate(25, omission: '...')
                     td = post.text.truncate(150, omission: '...')
+                    td = total_users(post)
                     td = views_percents(post)
                     td
                       - post.groups.each do |group|
-                        span.badge style="background-color: #{group.color}" = group.name
+                        = link_to group.name, admin_group_path(group), class: 'badge', style: "background-color: #{group.color}"
                     td.actions
                       = link_to 'Show', admin_post_path(post)
                       = link_to 'Edit', edit_admin_post_path(post)
@@ -43,6 +45,7 @@
               tr
                 th Title
                 th Text
+                th Total users
                 th Views stats
                 th Groups
                 th Actions

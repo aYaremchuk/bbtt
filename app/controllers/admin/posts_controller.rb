@@ -9,7 +9,6 @@ module Admin
     def show; end
 
     def new
-      # @post = Post.new
       @post_form = ::PostForm.new
     end
 
@@ -20,40 +19,19 @@ module Admin
     def create
       @post_form = ::PostForm.new(post_form_params.merge(current_user: current_user))
       if @post_form.save
-        # session[:user_id] = @signup_form.user.id
         redirect_to admin_posts_path, notice: 'Post was successfully created.'
       else
         render :new
       end
-      # @post = current_user.posts.new(post_params)
-      #
-      # respond_to do |format|
-      #   if @post.save
-      #     format.html { redirect_to [:admin, @post], notice: 'Post was successfully created.' }
-      #     format.json { render :show, status: :created, location: @post }
-      #   else
-      #     format.html { render :new }
-      #     format.json { render json: @post.errors, status: :unprocessable_entity }
-      #   end
-      # end
     end
 
     def update
       @post_form = ::PostForm.new(post_form_params.merge(current_user: current_user, id: @post.id))
       if @post_form.update
-        # session[:user_id] = @signup_form.user.id
         redirect_to admin_posts_path, notice: 'Post was successfully updated.'
       else
         render :edit
       end
-      # respond_to do |format|
-      #   if @post.update(post_params.merge(user: current_user))
-      #     format.html { redirect_to [:admin, @post], notice: 'Post was successfully updated.' }
-      #     format.json { render :show, status: :ok, location: @post }
-      #   else
-      #     format.html { render :edit }
-      #   end
-      # end
     end
 
     def destroy

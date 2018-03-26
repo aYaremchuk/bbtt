@@ -1,14 +1,14 @@
-= form_for [:admin, @post], html: { class: 'form-horizontal' } do |f|
+= form_for(@post_form, url: post_form_path(@post), method: post_form_method(@post), html: { class: 'form-horizontal' }) do |f|
   .card-header
     i.fa.fa-align-justify
     strong
       = title if defined? title
   .card-body
-    - if @post.errors.any?
+    - if @post_form.errors.any?
       #error_explanation
-        h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+        h2 = "#{pluralize(@post_form.errors.count, "error")} prohibited this post from being saved:"
         ul
-          - @post.errors.full_messages.each do |message|
+          - @post_form.errors.full_messages.each do |message|
             li = message
     .form-group.row
       label.col-md-3.col-form-label Title
@@ -18,8 +18,19 @@
       label.col-md-3.col-form-label Text
       .col-md-9
         = f.text_area :text, class: 'form-control'
+    .form-group.row
+      label.col-md-3.col-form-label Image
+      .col-md-9
+        = f.file_field :image
+    .form-group.row
+      label.col-md-3.col-form-label Group with permission
+      .col-md-9
+        = f.collection_check_boxes :group_ids, Group.all, :id, :name do |g|
+          .form-check.checkbox
+            = g.check_box class: 'form-check-input'
+            label.form-check-label = g.text
   .card-footer
-    = f.submit class: 'btn btn-sm btn-primary' do
+    = f.submit "#{post_form_button(@post)} post", class: 'btn btn-sm btn-primary' do
       i.fa.fa-dot-circle-o
     = link_to admin_posts_path, class: 'btn btn-sm btn-danger' do
       i.fa.fa-ban

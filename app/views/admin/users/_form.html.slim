@@ -3,7 +3,7 @@
 
   button.close aria-label="Close" data-dismiss="modal" type="button"
     span aria-hidden="true"  &times;
-= form_for [:admin, user], html: { class: 'form-horizontal' } do |f|
+= form_for(@user_form, url: form_path(@user), method: form_method(@user), html: { class: 'form-horizontal' }) do |f|
   .modal-body
     .form-group.row
       label.col-md-3.col-form-label Email
@@ -21,6 +21,13 @@
       label.col-md-3.col-form-label Role
       .col-md-9
         = f.select(:role, User.roles.keys.to_a, {}, {class: 'form-control'})
+    .form-group.row
+      label.col-md-3.col-form-label Connect to group
+      .col-md-9
+        = f.collection_check_boxes :group_ids, Group.all, :id, :name do |g|
+          .form-check.checkbox
+            = g.check_box class: 'form-check-input'
+            label.form-check-label = g.text
   .modal-footer
     button.btn.btn-secondary data-dismiss="modal" type="button"  Close
-    = f.submit class: 'btn btn-primary'
+    = f.submit "#{form_button(@user)} user", class: 'btn btn-primary'

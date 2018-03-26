@@ -1,32 +1,6 @@
 doctype html
 html
   = render 'layouts/head'
-  /!
-    | BODY options, add following classes to body to change options
-
-    | \// Header options
-    | 1. '.header-fixed'          - Fixed Header
-
-    | \// Brand options
-    | 1. '.brand-minimized'       - Minimized brand (Only symbol)
-
-    | \// Sidebar options
-    | 1. '.sidebar-fixed'          - Fixed Sidebar
-    | 2. '.sidebar-hidden'        - Hidden Sidebar
-    | 3. '.sidebar-off-canvas'    - Off Canvas Sidebar
-    | 4. '.sidebar-minimized'      - Minimized Sidebar (Only icons)
-    | 5. '.sidebar-compact'        - Compact Sidebar
-
-    | \// Aside options
-    | 1. '.aside-menu-fixed'      - Fixed Aside Menu
-    | 2. '.aside-menu-hidden'      - Hidden Aside Menu
-    | 3. '.aside-menu-off-canvas'  - Off Canvas Aside Menu
-
-    | \// Breadcrumb options
-    | 1. '.breadcrumb-fixed'      - Fixed Breadcrumb
-
-    | \// Footer options
-    | 1. '.footer-fixed'          - Fixed footer
   body.app.header-fixed.aside-menu-fixed.sidebar-fixed.aside-menu-hidden class=[current_user.user? ? 'sidebar-hidden' : 'sidebar-minimized']
     = render 'layouts/header'
     .app-body
@@ -34,21 +8,8 @@ html
       /! Main content
       main.main
         ol.breadcrumb
-          li.breadcrumb-item Home
-          li.breadcrumb-item
-            a href="#"  Admin
-          li.breadcrumb-item.active Dashboard
-          /! Breadcrumb Menu
           li.breadcrumb-menu.d-md-down-none
             .btn-group aria-label=("Button group") role="group"
-              / a.btn href="#"
-              /   i.icon-speech
-              / a.btn href="./"
-              /   i.icon-graph
-              /   | &nbsp;Dashboard
-              / a.btn href="#"
-              /   i.icon-settings
-              /   | &nbsp;Admin panel
         .container-fluid
           = flash_messages
           #ui-view

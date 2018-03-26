@@ -3,39 +3,36 @@ module Admin
     before_action :set_post, only: %i(show edit update destroy)
 
     def index
-      @posts = Post.all
+      @posts = Post.all.eager_load(:groups).includes(:posts_groups)
     end
 
     def show; end
 
     def new
-      @post = Post.new
+      @post_form = ::PostForm.new
     end
 
-    def edit; end
+    def edit
+      @post_form = ::PostForm.new(id: @post.id)
+    end
 
     def create
-      @post = current_user.posts.new(post_params)
-
-      respond_to do |format|
-        if @post.save
-          format.html { redirect_to [:admin, @post], notice: 'Post was successfully created.' }
-          format.json { render :show, status: :created, location: @post }
-        else
-          format.html { render :new }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
-        end
+      @post_form = ::PostForm.new(post_form_params.merge(current_user: current_user))
+      if post = @post_form.save
+        # image attach from ActiveStorage doesn't work in form object yet
+        post.image.attach(params[:post_form][:image])
+        redirect_to admin_posts_path, notice: 'Post was successfully created.'
+      else
+        render :new
       end
     end
 
     def update
-      respond_to do |format|
-        if @post.update(post_params.merge(user: current_user))
-          format.html { redirect_to [:admin, @post], notice: 'Post was successfully updated.' }
-          format.json { render :show, status: :ok, location: @post }
-        else
-          format.html { render :edit }
-        end
+      @post_form = ::PostForm.new(post_form_params.merge(current_user: current_user, id: @post.id))
+      if @post_form.update
+        redirect_to admin_posts_path, notice: 'Post was successfully updated.'
+      else
+        render :edit
       end
     end
 
@@ -55,6 +52,10 @@ module Admin
 
     def post_params
       params.require(:post).permit(:title, :text)
+    end
+
+    def post_form_params
+      params.require(:post_form).permit(:title, :text, :image, group_ids: [])
     end
   end
 end

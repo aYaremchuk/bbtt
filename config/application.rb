@@ -30,5 +30,6 @@ module Bbtt
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.to_prepare { Devise::Mailer.layout 'mailer' }
+    config.active_job.queue_adapter = :sidekiq
   end
 end

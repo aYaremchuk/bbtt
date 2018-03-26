@@ -10,7 +10,7 @@ head
   link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"
   = yield(:additional_styles) if yield(:additional_styles).present?
-  = stylesheet_link_tag 'application'
-  = javascript_include_tag 'application'
+  = stylesheet_link_tag 'application', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = render 'layouts/scripts'
   = csrf_meta_tags

@@ -2,12 +2,16 @@ BBTT
 ====
 system to create posts and distribute them
 
+
 ### Basic system specs:
 - Ruby 2.5.0
 - Rails 5.2.0.rc1
 
 ### DB adapter:
 - PostgreSQL
+
+### Additional requirement
+- Redis
 
 ### Configuration
 * bundle
@@ -17,6 +21,7 @@ system to create posts and distribute them
 * rake db:migrate
 * rake db:fill_users
 * rails s
+* sidekiq
 
 ### Credentials
 - Admin user  

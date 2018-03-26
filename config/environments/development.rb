@@ -71,4 +71,6 @@ Rails.application.configure do
   end
 
   config.cache_store = :redis_cache_store
+
+  config.active_storage.service = :local
 end

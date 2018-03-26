@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i(edit show update)
 
-  def show; end
+  def show
+    authorize @user
+  end
 
   def edit; end
 
@@ -21,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
   end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name)
+  def user_form_params
+    params.require(:user_form).permit(:first_name, :last_name, :role)
   end
 end

@@ -1,7 +1,7 @@
 class PostForm
   include ActiveModel::Model
 
-  attr_accessor :id, :title, :text, :group_ids, :current_user
+  attr_accessor :id, :title, :text, :group_ids, :current_user, :image
 
   validates :title, presence: true
 
@@ -25,9 +25,12 @@ class PostForm
         @post.groups << Group.where(id: group_ids)
         @post.save!
       end
+      # @post.image.attach(:image) # ActionDispatch::Http::UploadedFile object issue
+      #
+      # @post.image.attach(io: File.open(Rails.root.join("public", "song.jpeg")), filename: 'song.jpeg' , content_type: "image/jpeg")
       NewPostNotificationJob.perform_later(@post)
 
-      true
+      @post
     rescue e
       errors.add(:base, e.message)
 

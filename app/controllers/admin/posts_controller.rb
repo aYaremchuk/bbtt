@@ -18,7 +18,9 @@ module Admin
 
     def create
       @post_form = ::PostForm.new(post_form_params.merge(current_user: current_user))
-      if @post_form.save
+      if post = @post_form.save
+        # image attach from ActiveStorage doesn't work in form object yet
+        post.image.attach(params[:post_form][:image])
         redirect_to admin_posts_path, notice: 'Post was successfully created.'
       else
         render :new
@@ -53,7 +55,7 @@ module Admin
     end
 
     def post_form_params
-      params.require(:post_form).permit(:title, :text, group_ids: [])
+      params.require(:post_form).permit(:title, :text, :image, group_ids: [])
     end
   end
 end

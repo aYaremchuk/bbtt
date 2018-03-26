@@ -3,4 +3,5 @@
     .card-header
       = link_to post.title.truncate(60, omission: '...'), post_path(post)
     .card-body
+      = image_tag(post.image, class: 'img') if post.image.attached?
       = post.text.truncate(250, omission: '...')

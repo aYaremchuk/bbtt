@@ -19,6 +19,10 @@
       .col-md-9
         = f.text_area :text, class: 'form-control'
     .form-group.row
+      label.col-md-3.col-form-label Image
+      .col-md-9
+        = f.file_field :image
+    .form-group.row
       label.col-md-3.col-form-label Group with permission
       .col-md-9
         = f.collection_check_boxes :group_ids, Group.all, :id, :name do |g|

@@ -1,10 +1,13 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'simplecov'
-require "sidekiq/testing"
+require 'sidekiq/testing'
+require 'pundit/rspec'
 
 SimpleCov.start do
   load_profile 'rails'
+  add_group 'Services', 'app/services'
+  add_group 'Forms', 'app/forms'
   at_exit do
     SimpleCov.result.format!
     puts "Click to open report file://#{::Rails.root}/coverage/index.html#_AllFiles"

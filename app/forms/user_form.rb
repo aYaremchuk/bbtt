@@ -23,14 +23,14 @@ class UserForm
     return false if invalid?
     begin
       ActiveRecord::Base.transaction do
-        post = User.invite!(user_params)
-        post.groups << Group.where(id: group_ids)
-        post.save!
+        user = User.invite!(user_params)
+        user.groups << Group.where(id: group_ids)
+        user.save!
       end
 
       true
-    rescue e
-      errors.add(:base, e.message)
+    rescue StandardError => error
+      errors.add(:base, error.message)
 
       false
     end

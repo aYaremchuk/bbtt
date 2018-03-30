@@ -1,0 +1,60 @@
+engines:
+  rubocop:
+    enabled: true
+  brakeman:
+    enabled: true
+  duplication:
+    # Duplication analyzes JavaScript (including JSX and ES6), PHP, Python,
+    # and Ruby code for structural similarities.
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  bundler-audit:
+    # Find security vulnerabilities in your Ruby dependencies.
+    # bundler-audit offers patch-level verification for Bundler.
+    enabled: true
+  watson:
+    # Ember-watson finds bug-risk, security, and compatability issues with your
+    # Ember apps, and tells you how to fix them.
+    enabled: true
+  fixme:
+    # The FIXME engine finds comments in your code which match the strings
+    # TODO, FIXME, HACK, and BUG, which are all things you should fix now,
+    # not later. FIXME is also very simple, and is intended to provide a
+    # 'Hello World' like example for potential Code Climate Platform engine authors.
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  coffeelint:
+    enabled: true
+    checks:
+      max_line_length:
+        enabled: false
+  duplication:
+    enabled: true
+    exclude_paths:
+      - "spec/"
+    config:
+      languages:
+        ruby:
+          mass_threshold: 30
+        javascript:
+
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.erb"
+  - "**.rb"
+  - "**.css"
+  - "**.coffee"
+  - "**.inc"
+  - "**.js"
+  - "**.module"
+exclude_paths:
+- config/
+- db/
+- vendor/

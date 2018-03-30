@@ -11,7 +11,6 @@ class PostForm
       self.title = params[:title].nil? ? @post.title : params[:title]
       self.text = params[:text].nil? ? @post.text : params[:text]
       self.group_ids = params[:group_ids].nil? ? @post.groups.pluck(:id) : params[:group_ids]
-
     else
       super
     end
@@ -27,12 +26,13 @@ class PostForm
       end
       # @post.image.attach(:image) # ActionDispatch::Http::UploadedFile object issue
       #
-      # @post.image.attach(io: File.open(Rails.root.join("public", "song.jpeg")), filename: 'song.jpeg' , content_type: "image/jpeg")
+      # @post.image.attach(io: File.open(Rails.root.join("public", "song.jpeg")),
+      # filename: 'song.jpeg' , content_type: "image/jpeg")
       NewPostNotificationJob.perform_later(@post)
 
       @post
-    rescue e
-      errors.add(:base, e.message)
+    rescue StandardError => error
+      errors.add(:base, error.message)
 
       false
     end

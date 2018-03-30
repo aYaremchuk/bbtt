@@ -1,6 +1,11 @@
 BBTT
 ====
-system to create posts and distribute them
+[![Build Status](https://travis-ci.org/aYaremchuk/bbtt.svg?branch=master)](https://travis-ci.org/aYaremchuk/bbtt)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a5995c0e140d65b9f1b3/maintainability)](https://codeclimate.com/github/aYaremchuk/bbtt/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a5995c0e140d65b9f1b3/test_coverage)](https://codeclimate.com/github/aYaremchuk/bbtt/test_coverage)
+
+
+System to create posts and distribute them
 
 
 ### Basic system specs:

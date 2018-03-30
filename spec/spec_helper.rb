@@ -1,8 +1,11 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'simplecov'
+require 'simplecov-console'
 require 'sidekiq/testing'
 require 'pundit/rspec'
+
+SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
 
 SimpleCov.start do
   load_profile 'rails'

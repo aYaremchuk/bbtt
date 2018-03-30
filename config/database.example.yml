@@ -6,8 +6,8 @@ postgresql_base: &postgresql_base
   encoding: utf8
   reconnect: true
   pool: 5
-  username: username
-  password: password
+#  username: username
+#  password: password
 
 development:
   <<: *postgresql_base

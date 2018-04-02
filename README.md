@@ -10,7 +10,7 @@ System to create posts and distribute them
 
 ### Basic system specs:
 - Ruby 2.5.0
-- Rails 5.2.0.rc1
+- Rails 5.2.0.rc2
 
 ### DB adapter:
 - PostgreSQL

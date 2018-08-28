@@ -20,19 +20,20 @@ System to create posts and distribute them
 
 ### Configuration
 * bundle
-* copy config/database.example.yml into config/database.yml
-* set your username and password into config/database.yml for postgreSQL
-* rake db:create
-* rake db:migrate
-* rake db:fill_users
-* rails s
-* sidekiq
+* define environment variable ``ENV['SECRET_KEY_BASE']``
+* copy ``config/database.example.yml`` into ``config/database.yml``
+* set your username and password into ``config/database.yml`` for postgreSQL
+* ``rake db:create``
+* ``rake db:migrate``
+* run rake task to fill DB with users``rake db:fill_users``
+* ``rails s``
+* ``sidekiq``
 
 ### Credentials
 - Admin user  
-login: admin@test.com
-password: 123456789
+login: ``admin@test.com``
+password: ``12345678``
 
 - User  
-login: user@test.com
-password: 12345678
+login: ``user@test.com``
+password: ``12345678``

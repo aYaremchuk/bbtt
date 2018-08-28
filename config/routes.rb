@@ -1,6 +1,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  # mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
+  mount ActionCable.server, at: '/cable'
   root to: 'posts#index'
 
   get 'home/index'

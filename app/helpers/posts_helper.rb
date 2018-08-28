@@ -16,7 +16,7 @@ module PostsHelper
   end
 
   def views_percents(post)
-    return '-' if post.views_info.empty?
+    return '-' if post.views_info.empty? || total_users(post).zero?
     "#{100 * post.views_info.length / total_users(post)} %"
   end
 end

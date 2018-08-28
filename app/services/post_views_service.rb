@@ -1,4 +1,6 @@
 class PostViewsService
+  include PostsHelper
+
   def initialize(post, user)
     @post = post
     @user = user
@@ -13,5 +15,6 @@ class PostViewsService
   def update_post
     @post.views_info[@user.id] = Time.zone.now
     @post.save!
+    ActionCable.server.broadcast('stats_revision', post_id: @post.id, views_stats: views_percents(@post))
   end
 end

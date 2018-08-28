@@ -31,5 +31,7 @@ module Bbtt
     config.generators.system_tests = nil
     config.to_prepare { Devise::Mailer.layout 'mailer' }
     config.active_job.queue_adapter = :sidekiq
+
+    config.action_cable.mount_path = '/websocket'
   end
 end

@@ -7,6 +7,7 @@ class PostViewsService
   end
 
   def perform
+    # StatsRevisionChannel.broadcast_to('test')
     update_post unless @post.views_info[@user.id.to_s].present?
   end
 

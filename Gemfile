@@ -71,9 +71,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
   gem 'rspec_junit_formatter'
   gem 'rspec-sidekiq'
   gem 'shoulda-matchers', '~> 3.1'
@@ -81,6 +78,9 @@ group :test do
   gem 'simplecov-console', require: false
   gem 'faker'
   gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -41,7 +41,7 @@ RSpec::Sidekiq.configure do |config|
   config.enable_terminal_colours = true # default => true
 
   # Warn when jobs are not enqueued to Redis but to a job array
-  config.warn_when_jobs_not_processed_by_sidekiq = true # default => true
+  config.warn_when_jobs_not_processed_by_sidekiq = false # default => true
 end
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

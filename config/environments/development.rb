@@ -73,4 +73,6 @@ Rails.application.configure do
   config.cache_store = :redis_cache_store
 
   config.active_storage.service = :local
+
+  ActionCable.server.config.logger = Logger.new("#{Rails.root}/log/development_websocket.log")
 end

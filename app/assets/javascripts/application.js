@@ -16,5 +16,7 @@
 //= require activestorage
 //= require turbolinks
 //= require custom
+//= require cable
+//= require channels/stats_revision
 
 //= require_self

@@ -15,10 +15,6 @@ engines:
     # Find security vulnerabilities in your Ruby dependencies.
     # bundler-audit offers patch-level verification for Bundler.
     enabled: true
-  watson:
-    # Ember-watson finds bug-risk, security, and compatability issues with your
-    # Ember apps, and tells you how to fix them.
-    enabled: true
   fixme:
     # The FIXME engine finds comments in your code which match the strings
     # TODO, FIXME, HACK, and BUG, which are all things you should fix now,

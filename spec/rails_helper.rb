@@ -36,34 +36,21 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-### BEGIN config Before Travis
-# Capybara.register_driver :chrome do |app|
-#   Capybara::Selenium::Driver.new(app, browser: :chrome)
-# end
-#
-# Capybara.register_driver :headless_chrome do |app|
-#   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-#       chromeOptions: { args: %w(headless disable-gpu) }
-#   )
-#
-#   Capybara::Selenium::Driver.new app,
-#                                  browser: :chrome,
-#                                  desired_capabilities: capabilities
-# end
-#
-# Capybara.javascript_driver = :headless_chrome
-### END config Before Travis
-Capybara.register_driver :chrome do |app|
-  browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  browser_options.args << '--headless'
-  browser_options.args << '--disable-gpu'
-  browser_options.args << '--window-size=1920,2000'
-  browser_options.args << '--no-sandbox' if ENV['CONTINUOUS_INTEGRATION']
-  Capybara::Selenium::Driver.new app, browser: :chrome, options: browser_options
-end
-Capybara.javascript_driver = :chrome
 
-##
+Capybara.server = :puma, { Silent: true }
+
+Capybara.register_driver :chrome_headless do |app|
+  options = ::Selenium::WebDriver::Chrome::Options.new
+
+  options.add_argument('--headless')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--window-size=1400,1400')
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
+Capybara.javascript_driver = :chrome_headless
 ##
 RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
@@ -113,5 +100,13 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :chrome_headless
   end
 end

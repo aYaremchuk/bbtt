@@ -11,11 +11,11 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
 
     trait :user do
-      role 'user'
+      role { 'user' }
     end
 
     trait :admin do
-      role 'admin'
+      role { 'admin' }
     end
 
     trait :user_with_posts do

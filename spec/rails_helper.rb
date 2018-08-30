@@ -9,6 +9,7 @@ require 'database_cleaner'
 require 'shoulda-matchers'
 require 'support/factory_bot'
 require 'selenium/webdriver'
+require 'action_cable/testing/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -39,6 +40,15 @@ end
 
 Capybara.server = :puma, { Silent: true }
 
+### chrome driver use gui browser
+# use it to debug scenario by adding 'driver: :chrome'
+# expample: scenario 'example scenario', js: true, driver: :chrome do
+###
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+### headless driver used by default
 Capybara.register_driver :chrome_headless do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
@@ -51,6 +61,7 @@ Capybara.register_driver :chrome_headless do |app|
 end
 
 Capybara.javascript_driver = :chrome_headless
+
 ##
 RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller

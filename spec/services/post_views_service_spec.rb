@@ -16,12 +16,21 @@ describe PostViewsService do
   end
 
   context 'first visit' do
+    let(:group) { create(:group) }
+
+    before do
+      user.groups << group
+      post.groups << group
+    end
+
     subject { PostViewsService.new(post, user).perform }
 
     it 'updates users views' do
-      expect(post.views_info.length).to eq 0
-      subject
-      expect(post.views_info.length).to eq 1
+      expect { subject }.to change { post.views_info.length }.from(0).to(1)
+    end
+
+    it 'send data to stats revision channel' do
+      expect { subject }.to have_broadcasted_to('stats_revision').with(post_id: post.id, views_stats: '100 %')
     end
   end
 

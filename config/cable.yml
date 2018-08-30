@@ -6,4 +6,4 @@ redis: &redis
 production: *redis
 development: *redis
 test:
-  adapter: async
+  adapter: test

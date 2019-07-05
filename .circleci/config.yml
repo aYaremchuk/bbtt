@@ -60,7 +60,12 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
-
+      - run:
+          name: make folder
+          command: mkdir /tmp/1
+      - store_artifacts:
+          path: /tmp/2
+          destination: tmp_test
       # run tests!
       - run:
           name: run tests

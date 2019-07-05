@@ -65,7 +65,6 @@ jobs:
           command: mkdir /tmp/1
       - store_artifacts:
           path: /tmp/2
-          destination: tmp_test
       # run tests!
       - run:
           name: run tests
@@ -84,4 +83,3 @@ jobs:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
-          destination: test-results

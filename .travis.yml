@@ -2,6 +2,7 @@ env:
   global:
     - CC_TEST_REPORTER_ID=e5846986ece18945bd1d9bd02380b419a7d82ca0e9a8584f5fb03cebcc4dccf3
 language: ruby
+dist: trusty
 rvm:
   - 2.5.1
 notifications:

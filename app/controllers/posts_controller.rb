@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+
   def index
+    # @posts = Post.joins(:groups).eager_load(:image_attachment).where('groups.id IN (?)', current_user.groups.pluck(:id)) @posts = Post.joins(:groups).eager_load(:image_attachment).where('groups.id IN (?)', current_user.groups.pluck(:id)) @posts = Post.joins(:groups).eager_load(:image_attachment).where('groups.id IN (?)', current_user.groups.pluck(:id))
     @posts = Post.joins(:groups).eager_load(:image_attachment).where('groups.id IN (?)', current_user.groups.pluck(:id))
     authorize @posts
   end

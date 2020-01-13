@@ -47,6 +47,8 @@ gem 'redis'
 gem 'sidekiq'
 gem 'timecop'
 gem 'pronto'
+gem 'pronto-rubocop', require: false
+gem 'pronto-flay', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

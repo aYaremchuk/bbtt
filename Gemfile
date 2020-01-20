@@ -48,7 +48,8 @@ gem 'sidekiq'
 gem 'timecop'
 gem 'pronto'
 gem 'pronto-rubocop', require: false
-gem 'pronto-flay', require: false
+#gem 'pronto-flay', require: false
+gem 'pronto-brakeman', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,6 +57,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'factory_bot_rails'
   gem 'bullet'
+  gem 'brakeman'
 end
 
 group :development do

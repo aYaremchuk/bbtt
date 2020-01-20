@@ -11,4 +11,8 @@ class PostsController < ApplicationController
     PostViewsService.new(@post, current_user).perform
     authorize @post
   end
+
+  def user_form_params
+    params.require(:user_form).permit(:first_name, :last_name, :role)
+  end
 end

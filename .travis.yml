@@ -9,9 +9,12 @@ notifications:
   - false
 bundler_args: --jobs=2
 script:
+  - sudo apt-get update
+  - sudo apt-get install chromium-chromedriver
   - bundle exec rake db:setup
   - bundle exec rspec spec
 before_script:
+  - 'export PATH=$PATH:/usr/lib/chromium-browser/'
   - cp config/database.example.yml config/database.yml
   - psql -c 'create database bbtt_test;' -U postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter

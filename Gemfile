@@ -79,7 +79,6 @@ group :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'capybara'
-  gem 'chromedriver-helper'
   gem 'selenium-webdriver'
   gem 'action-cable-testing'
 end

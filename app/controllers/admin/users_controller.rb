@@ -3,7 +3,7 @@ module Admin
     before_action :set_user, only: %i(show edit update destroy)
 
     def index
-      @users = User.eager_load(:groups).includes(:users_groups).where.not(id: current_user.id)
+      @users = User.where.not(id: current_user.id)
     end
 
     def show; end

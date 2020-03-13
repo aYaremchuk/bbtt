@@ -52,7 +52,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', require: false
   gem 'factory_bot_rails'
-  gem 'bullet'
 end
 
 group :development do
@@ -70,7 +69,7 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '4.0.0.beta3'
   gem 'rspec_junit_formatter'
   gem 'rspec-sidekiq'
   gem 'shoulda-matchers', '~> 4.1'

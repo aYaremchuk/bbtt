@@ -40,7 +40,7 @@ class UserForm
     return false if invalid?
     begin
       ActiveRecord::Base.transaction do
-        @user.update_attributes(user_params)
+        @user.update(user_params)
         @user.touch
         @user.groups = Group.where(id: group_ids)
         @user.save!

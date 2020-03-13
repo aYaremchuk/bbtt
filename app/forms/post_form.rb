@@ -42,7 +42,7 @@ class PostForm
     return false if invalid?
     begin
       ActiveRecord::Base.transaction do
-        @post.update_attributes(post_params.slice(:title, :text))
+        @post.update(post_params.slice(:title, :text))
         @post.touch
         @post.groups = Group.where(id: group_ids)
         @post.save!

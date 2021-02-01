@@ -73,7 +73,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
   gem 'rspec-sidekiq'
-  gem 'shoulda-matchers', '~> 4.1'
+  gem 'shoulda-matchers', '~> 4.5'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
   gem 'faker'
